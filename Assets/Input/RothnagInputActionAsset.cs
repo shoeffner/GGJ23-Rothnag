@@ -92,6 +92,98 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""CharacterOverviewMap"",
+            ""id"": ""fd4dd3b4-af7f-4034-b67e-bb5b61a9037d"",
+            ""actions"": [
+                {
+                    ""name"": ""MapRotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""b12e82c4-6238-4ac2-a2f2-5c60e2eff931"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MapForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""55bb2560-981c-491e-b430-d01e673ffcc1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""da0540d0-b38d-49e7-a10d-24d848bcb23b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapRotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""33f073b5-ea49-4ed8-b7d3-5855206b4714"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""ff99627c-9188-4265-b9eb-8053e687a431"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""9e7cf6ac-0282-4767-b335-cf6e7c73c861"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapForward"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""fad3b0e6-18dd-412c-808c-a59de0b6f221"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""2263213e-2173-457d-96c9-918f1e05ab3d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -100,6 +192,10 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         m_CharacterActionMap = asset.FindActionMap("CharacterActionMap", throwIfNotFound: true);
         m_CharacterActionMap_Walk = m_CharacterActionMap.FindAction("Walk", throwIfNotFound: true);
         m_CharacterActionMap_Jump = m_CharacterActionMap.FindAction("Jump", throwIfNotFound: true);
+        // CharacterOverviewMap
+        m_CharacterOverviewMap = asset.FindActionMap("CharacterOverviewMap", throwIfNotFound: true);
+        m_CharacterOverviewMap_MapRotate = m_CharacterOverviewMap.FindAction("MapRotate", throwIfNotFound: true);
+        m_CharacterOverviewMap_MapForward = m_CharacterOverviewMap.FindAction("MapForward", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,9 +292,55 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         }
     }
     public CharacterActionMapActions @CharacterActionMap => new CharacterActionMapActions(this);
+
+    // CharacterOverviewMap
+    private readonly InputActionMap m_CharacterOverviewMap;
+    private ICharacterOverviewMapActions m_CharacterOverviewMapActionsCallbackInterface;
+    private readonly InputAction m_CharacterOverviewMap_MapRotate;
+    private readonly InputAction m_CharacterOverviewMap_MapForward;
+    public struct CharacterOverviewMapActions
+    {
+        private @RothnagInputActionAsset m_Wrapper;
+        public CharacterOverviewMapActions(@RothnagInputActionAsset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MapRotate => m_Wrapper.m_CharacterOverviewMap_MapRotate;
+        public InputAction @MapForward => m_Wrapper.m_CharacterOverviewMap_MapForward;
+        public InputActionMap Get() { return m_Wrapper.m_CharacterOverviewMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CharacterOverviewMapActions set) { return set.Get(); }
+        public void SetCallbacks(ICharacterOverviewMapActions instance)
+        {
+            if (m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface != null)
+            {
+                @MapRotate.started -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapRotate;
+                @MapRotate.performed -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapRotate;
+                @MapRotate.canceled -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapRotate;
+                @MapForward.started -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapForward;
+                @MapForward.performed -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapForward;
+                @MapForward.canceled -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapForward;
+            }
+            m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MapRotate.started += instance.OnMapRotate;
+                @MapRotate.performed += instance.OnMapRotate;
+                @MapRotate.canceled += instance.OnMapRotate;
+                @MapForward.started += instance.OnMapForward;
+                @MapForward.performed += instance.OnMapForward;
+                @MapForward.canceled += instance.OnMapForward;
+            }
+        }
+    }
+    public CharacterOverviewMapActions @CharacterOverviewMap => new CharacterOverviewMapActions(this);
     public interface ICharacterActionMapActions
     {
         void OnWalk(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface ICharacterOverviewMapActions
+    {
+        void OnMapRotate(InputAction.CallbackContext context);
+        void OnMapForward(InputAction.CallbackContext context);
     }
 }
