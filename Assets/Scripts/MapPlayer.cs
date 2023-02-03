@@ -19,8 +19,8 @@ public class MapPlayer : MonoBehaviour {
     }
  
     void FixedUpdate() {
-        float moveLR = Input.GetAxis("Horizontal") * rotationSpeed;
-        float moveFw = Input.GetAxis("Vertical");
+        float moveLR = 0; //Input.GetAxis("Horizontal") * rotationSpeed;
+        float moveFw = 0; //Input.GetAxis("Vertical");
         forwardVector.y = forwardSpeed * moveFw;
         transform.Translate(forwardVector);
         transform.Rotate(0, 0, -moveLR);
