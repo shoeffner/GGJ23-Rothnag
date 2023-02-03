@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 namespace Rothnag {
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(LoadScene("Home"));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+    IEnumerator LoadScene(string scene) {
+        SceneManager.LoadSceneAsync(scene);
+        yield return null;
     }
 }
 

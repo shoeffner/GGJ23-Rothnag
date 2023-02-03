@@ -38,12 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ambience
+    uniqueID: 1467930627
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tree
+    uniqueID: 1949993013
     locked: 0
   - name: Character
     uniqueID: 4214865801
     locked: 0
-  - name: Ambience
-    uniqueID: 1467930627
+  - name: Interactables
+    uniqueID: 214531615
     locked: 0
