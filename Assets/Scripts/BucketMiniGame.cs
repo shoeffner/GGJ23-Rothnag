@@ -22,6 +22,8 @@ public class BucketMiniGame : MonoBehaviour
     {
         _inputs = InputProvider.instance.BucketMiniGame;
         _charInputs = InputProvider.instance.CharacterActionMap;
+        _charInputs.Jump.Enable();
+        _inputs.Crank.Disable();
     }
 
     public void OnEnable() {
@@ -36,6 +38,13 @@ public class BucketMiniGame : MonoBehaviour
         }
         _inputs.Crank.performed += Crank;
     }
+
+
+    private void OnDisable()
+    {
+        _inputs.Crank.performed -= Crank;
+    }
+
 
     private void Crank(InputAction.CallbackContext cb)
     {
@@ -63,6 +72,7 @@ public class BucketMiniGame : MonoBehaviour
 
     public void PreStartGame() {
         _charInputs.Jump.Disable();
+        _inputs.Crank.Enable();
         transform.position = new Vector3(
             bucketPosition.x,
             bucketPosition.y,
