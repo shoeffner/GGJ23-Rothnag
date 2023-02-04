@@ -2,10 +2,10 @@ using System;
 using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Rothnag;
 
 public class BucketMiniGame : MonoBehaviour
 {
-    private bool bucketFull = false;
     public Rigidbody2D rb;
     public Collider2D top;
     public Collider2D bottom;
@@ -72,14 +72,15 @@ public class BucketMiniGame : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider == bottom) {
-            bucketFull = true;
             spriteRenderer.sprite = bucketFullSprite;
             // start for the player
             top.enabled = true;
             _inputs.Crank.Enable();
         }
         if (collision.collider == top) {
-            //TODO: give bucket to player
+            //give bucket to player
+            PlayerInventory.instance.bucket++;
+            // reset controls and hide bucket
             _charInputs.Jump.Enable();
             _charInputs.Walk.Enable();
             _inputs.Crank.Disable();
@@ -89,7 +90,6 @@ public class BucketMiniGame : MonoBehaviour
                 bucketPosition.x,
                 bucketPosition.y,
                 bucketPosition.z);
-            // TODO: disable image
         }
     }
 
@@ -103,11 +103,5 @@ public class BucketMiniGame : MonoBehaviour
             bucketPosition.z);
         top.enabled = false; // will be set to true when we hit the bottom
         rb.gravityScale = 1f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
