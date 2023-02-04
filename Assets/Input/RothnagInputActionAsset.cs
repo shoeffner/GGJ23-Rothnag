@@ -432,7 +432,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                 {
                     ""name"": """",
                     ""id"": ""2e92f17f-6b81-4cd4-898e-ac42063da9c0"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -443,7 +443,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                 {
                     ""name"": """",
                     ""id"": ""ad119bc4-f66d-4ee7-80cf-ee2dbf888b79"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
