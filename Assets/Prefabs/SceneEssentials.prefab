@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4729254903935370751}
+  - component: {fileID: 2782419512467421963}
   m_Layer: 0
   m_Name: SceneEssentials
   m_TagString: Untagged
@@ -34,8 +35,20 @@ Transform:
   - {fileID: 5961885937769865392}
   - {fileID: 5961885938475200194}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2782419512467421963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690698989147750796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e1bfdfbbe644776a47c016d4eb811d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5961885937769865292
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,14 +453,6 @@ PrefabInstance:
       propertyPath: triggerer
       value: 
       objectReference: {fileID: 5961885936828389788}
-    - target: {fileID: 8185913836271759539, guid: 901a1a273f6ed449d90e465f11b6c3d0, type: 3}
-      propertyPath: scene.scenePath
-      value: Assets/Scenes/Map.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185913836271759539, guid: 901a1a273f6ed449d90e465f11b6c3d0, type: 3}
-      propertyPath: scene.sceneAsset
-      value: 
-      objectReference: {fileID: 102900000, guid: 8c37294d85b5a31469cf96c749f68bd3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

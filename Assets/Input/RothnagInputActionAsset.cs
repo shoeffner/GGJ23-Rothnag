@@ -44,6 +44,15 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CheatEventProgress"",
+                    ""type"": ""Button"",
+                    ""id"": ""955fbae2-ebe7-4a57-9cee-f383e01d585f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +174,17 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2c36d1b-6d51-4408-8692-f26db46a1923"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheatEventProgress"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -401,6 +421,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         m_CharacterActionMap = asset.FindActionMap("CharacterActionMap", throwIfNotFound: true);
         m_CharacterActionMap_Walk = m_CharacterActionMap.FindAction("Walk", throwIfNotFound: true);
         m_CharacterActionMap_Jump = m_CharacterActionMap.FindAction("Jump", throwIfNotFound: true);
+        m_CharacterActionMap_CheatEventProgress = m_CharacterActionMap.FindAction("CheatEventProgress", throwIfNotFound: true);
         // CharacterOverviewMap
         m_CharacterOverviewMap = asset.FindActionMap("CharacterOverviewMap", throwIfNotFound: true);
         m_CharacterOverviewMap_MapLeftRight = m_CharacterOverviewMap.FindAction("MapLeftRight", throwIfNotFound: true);
@@ -466,12 +487,14 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
     private ICharacterActionMapActions m_CharacterActionMapActionsCallbackInterface;
     private readonly InputAction m_CharacterActionMap_Walk;
     private readonly InputAction m_CharacterActionMap_Jump;
+    private readonly InputAction m_CharacterActionMap_CheatEventProgress;
     public struct CharacterActionMapActions
     {
         private @RothnagInputActionAsset m_Wrapper;
         public CharacterActionMapActions(@RothnagInputActionAsset wrapper) { m_Wrapper = wrapper; }
         public InputAction @Walk => m_Wrapper.m_CharacterActionMap_Walk;
         public InputAction @Jump => m_Wrapper.m_CharacterActionMap_Jump;
+        public InputAction @CheatEventProgress => m_Wrapper.m_CharacterActionMap_CheatEventProgress;
         public InputActionMap Get() { return m_Wrapper.m_CharacterActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -487,6 +510,9 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                 @Jump.started -= m_Wrapper.m_CharacterActionMapActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_CharacterActionMapActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_CharacterActionMapActionsCallbackInterface.OnJump;
+                @CheatEventProgress.started -= m_Wrapper.m_CharacterActionMapActionsCallbackInterface.OnCheatEventProgress;
+                @CheatEventProgress.performed -= m_Wrapper.m_CharacterActionMapActionsCallbackInterface.OnCheatEventProgress;
+                @CheatEventProgress.canceled -= m_Wrapper.m_CharacterActionMapActionsCallbackInterface.OnCheatEventProgress;
             }
             m_Wrapper.m_CharacterActionMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -497,6 +523,9 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @CheatEventProgress.started += instance.OnCheatEventProgress;
+                @CheatEventProgress.performed += instance.OnCheatEventProgress;
+                @CheatEventProgress.canceled += instance.OnCheatEventProgress;
             }
         }
     }
@@ -546,6 +575,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
     {
         void OnWalk(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnCheatEventProgress(InputAction.CallbackContext context);
     }
     public interface ICharacterOverviewMapActions
     {
