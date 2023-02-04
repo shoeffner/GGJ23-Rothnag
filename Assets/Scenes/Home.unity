@@ -202,11 +202,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520747249165990051, guid: fc16943b5b43043109eee1d7635db6be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1520747249165990051, guid: fc16943b5b43043109eee1d7635db6be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.74
+      value: -4.78
       objectReference: {fileID: 0}
     - target: {fileID: 1520747249165990051, guid: fc16943b5b43043109eee1d7635db6be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -253,6 +253,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3498837360943461309, guid: 7cab11ce66c8c48a7b5a6ffa445a6017, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498837360943461309, guid: 7cab11ce66c8c48a7b5a6ffa445a6017, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4690698989147750796, guid: 7cab11ce66c8c48a7b5a6ffa445a6017, type: 3}
       propertyPath: m_Name
       value: SceneEssentials
@@ -329,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7116065830907646967, guid: 418072e2626e840cdae89a51a3f2dad5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.78
+      value: -0.83
       objectReference: {fileID: 0}
     - target: {fileID: 7116065830907646967, guid: 418072e2626e840cdae89a51a3f2dad5, type: 3}
       propertyPath: m_LocalPosition.z
