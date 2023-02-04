@@ -66,7 +66,6 @@ namespace Rothnag
 
             _treeNeedsEventPrefabsNotInUse = treeNeedsEventPrefabs.ToHashSet();
             timeUntilNextEvent = timeUntilNextEventStartValue;
-            Invoke(nameof(SpawnRandomEvent), 0f);
         }
 
         private void SpawnRandomEvent()
