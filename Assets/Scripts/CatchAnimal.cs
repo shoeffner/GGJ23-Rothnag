@@ -7,6 +7,9 @@ namespace Rothnag
         public GameObject owner;
 
         protected override void InteractionBehaviour()
-            => Destroy(owner);
+        {
+            PlayerInventory.instance.animal++;
+            Destroy(owner);
+        }
     }
 }
