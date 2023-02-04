@@ -7,14 +7,19 @@ public sealed class CharacterController : MonoBehaviour
 {
     [Header("References")]
     public Rigidbody2D rb;
+    public Animator animator;
 
     [Header("cfg")]
     public float jumpForce;
 
     public float movementForce;
 
+    public float animatorTolerance;
+
     private RothnagInputActionAsset.CharacterActionMapActions _inputs;
     private float _currentWalkInput;
+
+    private int _lastDirection = 0;
 
     private void Awake()
     {
@@ -42,10 +47,29 @@ public sealed class CharacterController : MonoBehaviour
         rb.AddForce(jumpForce * Vector2.up);
     }
 
+    private int VelocityToDirection(float verticalVelocity)
+    {
+        if (verticalVelocity <= animatorTolerance && verticalVelocity >= -animatorTolerance)
+        {
+            return 0;
+        }
+
+        return verticalVelocity < 0 ? -1 : 1;
+    }
+
     private void FixedUpdate()
     {
         // apply continuous inputs here
-        
         rb.AddForce(_currentWalkInput * movementForce * Vector2.right);
+
+        int currentDirection = VelocityToDirection(rb.velocity.x);
+        if (_lastDirection == currentDirection)
+        {
+            return;
+        }
+        
+        Vector2 newRotation = new Vector2(0, currentDirection < 0 ? 180 : 0);
+        gameObject.transform.eulerAngles = newRotation;
+        animator.SetBool("IsWalking", Math.Abs(rb.velocity.x) >= 1);
     }
 }
