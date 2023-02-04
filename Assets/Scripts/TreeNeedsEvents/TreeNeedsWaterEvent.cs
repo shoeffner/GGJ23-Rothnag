@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 namespace Rothnag.TreeNeedsEvents
 {
-    // TODO: implement properly
     public sealed class TreeNeedsWaterEvent : TreeNeedsEvent
     {
         private RothnagInputActionAsset.CharacterActionMapActions _instanceCharacterActionMap;
