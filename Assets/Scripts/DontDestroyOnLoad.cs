@@ -6,11 +6,8 @@ namespace Rothnag {
 
 public class DontDestroyOnLoad : MonoBehaviour
 {
-    public static DontDestroyOnLoad Instance;
-
     private void Awake()
     {
-        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 }
