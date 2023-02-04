@@ -13,7 +13,7 @@ public sealed class SceneTracker
     private static SceneTracker instance = null;
     public static SceneTracker Instance {
         get {
-            if (instance == null) {
+            if (instance is null) {
                 instance = new SceneTracker();
             }
             return instance;

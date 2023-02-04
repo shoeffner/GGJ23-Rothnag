@@ -424,6 +424,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8306008069819890209, guid: 9ba5bc6fdcb7e1340ab0ea189b83d564, type: 3}
+      propertyPath: treeNeedsEventPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306008069819890209, guid: 9ba5bc6fdcb7e1340ab0ea189b83d564, type: 3}
+      propertyPath: treeNeedsEventPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 2820448620306049522, guid: 5c29be334d305694ebaa9f5a23b3b212, type: 3}
     - target: {fileID: 8306008069819890210, guid: 9ba5bc6fdcb7e1340ab0ea189b83d564, type: 3}
       propertyPath: m_Name
       value: TreeNeedsEventManager
