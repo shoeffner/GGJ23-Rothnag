@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f95992eb92459abb4c08cd2390e4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntilNextEventStartValue: 60
+  timeUntilNextEventStartValue: 20
   spawnTimerFactor: 0.9
   treeNeedsEventPrefabs:
   - {fileID: 8271700201643615961, guid: b966b0e37e4da4640bf8a2ad8a0ca091, type: 3}
@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 1892278902}
   m_Layer: 0
   m_Name: ScoreKeeper
-  m_TagString: Untagged
+  m_TagString: ScoreKeeper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
