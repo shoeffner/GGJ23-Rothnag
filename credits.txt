@@ -1,0 +1,14 @@
+
+
+========================================================================
+
+SceneReference
+
+https://github.com/Tymski/SceneReference
+
+Copyright (c) 2017 JohannesMP
+Copyright (c) 2019 S. Tarık Çetin
+Cypyright (c) 2020 Tymski
+
+
+========================================================================
