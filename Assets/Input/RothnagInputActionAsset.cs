@@ -413,6 +413,45 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""BucketMiniGame"",
+            ""id"": ""993f3cec-bb3c-4b38-aad8-87b8a7e7b95e"",
+            ""actions"": [
+                {
+                    ""name"": ""Crank"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c8a9c08-b8ab-4138-9473-1dcb641660b0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2e92f17f-6b81-4cd4-898e-ac42063da9c0"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crank"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad119bc4-f66d-4ee7-80cf-ee2dbf888b79"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crank"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -426,6 +465,9 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         m_CharacterOverviewMap = asset.FindActionMap("CharacterOverviewMap", throwIfNotFound: true);
         m_CharacterOverviewMap_MapLeftRight = m_CharacterOverviewMap.FindAction("MapLeftRight", throwIfNotFound: true);
         m_CharacterOverviewMap_MapUpDown = m_CharacterOverviewMap.FindAction("MapUpDown", throwIfNotFound: true);
+        // BucketMiniGame
+        m_BucketMiniGame = asset.FindActionMap("BucketMiniGame", throwIfNotFound: true);
+        m_BucketMiniGame_Crank = m_BucketMiniGame.FindAction("Crank", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -571,6 +613,39 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         }
     }
     public CharacterOverviewMapActions @CharacterOverviewMap => new CharacterOverviewMapActions(this);
+
+    // BucketMiniGame
+    private readonly InputActionMap m_BucketMiniGame;
+    private IBucketMiniGameActions m_BucketMiniGameActionsCallbackInterface;
+    private readonly InputAction m_BucketMiniGame_Crank;
+    public struct BucketMiniGameActions
+    {
+        private @RothnagInputActionAsset m_Wrapper;
+        public BucketMiniGameActions(@RothnagInputActionAsset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Crank => m_Wrapper.m_BucketMiniGame_Crank;
+        public InputActionMap Get() { return m_Wrapper.m_BucketMiniGame; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BucketMiniGameActions set) { return set.Get(); }
+        public void SetCallbacks(IBucketMiniGameActions instance)
+        {
+            if (m_Wrapper.m_BucketMiniGameActionsCallbackInterface != null)
+            {
+                @Crank.started -= m_Wrapper.m_BucketMiniGameActionsCallbackInterface.OnCrank;
+                @Crank.performed -= m_Wrapper.m_BucketMiniGameActionsCallbackInterface.OnCrank;
+                @Crank.canceled -= m_Wrapper.m_BucketMiniGameActionsCallbackInterface.OnCrank;
+            }
+            m_Wrapper.m_BucketMiniGameActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Crank.started += instance.OnCrank;
+                @Crank.performed += instance.OnCrank;
+                @Crank.canceled += instance.OnCrank;
+            }
+        }
+    }
+    public BucketMiniGameActions @BucketMiniGame => new BucketMiniGameActions(this);
     public interface ICharacterActionMapActions
     {
         void OnWalk(InputAction.CallbackContext context);
@@ -581,5 +656,9 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
     {
         void OnMapLeftRight(InputAction.CallbackContext context);
         void OnMapUpDown(InputAction.CallbackContext context);
+    }
+    public interface IBucketMiniGameActions
+    {
+        void OnCrank(InputAction.CallbackContext context);
     }
 }

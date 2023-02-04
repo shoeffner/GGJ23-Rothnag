@@ -391,6 +391,45 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "BucketMiniGame",
+            "id": "993f3cec-bb3c-4b38-aad8-87b8a7e7b95e",
+            "actions": [
+                {
+                    "name": "Crank",
+                    "type": "Button",
+                    "id": "0c8a9c08-b8ab-4138-9473-1dcb641660b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2e92f17f-6b81-4cd4-898e-ac42063da9c0",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crank",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad119bc4-f66d-4ee7-80cf-ee2dbf888b79",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crank",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
