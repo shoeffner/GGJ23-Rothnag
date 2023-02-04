@@ -6,37 +6,41 @@ using UnityEngine.InputSystem;
  
 public class MapPlayer : MonoBehaviour {
  
-    private float rotationSpeed = 4f;
-    private float forwardSpeed = .1f;
-    private Vector3 forwardVector = new Vector3(0f, 0f, 0f);
+    private float movementSpeed = .1f;
+    private Vector3 movementVector = new Vector3(0f, 0f, 0f);
+    private Vector3 rotationVector = new Vector3(0f, 0f, 0f);
     private RothnagInputActionAsset.CharacterOverviewMapActions _inputs;
 
-    private float _currentForward;
-    private float _currentRotate;
+    private float leftRight;
+    private float upDown;
+
+    // get only the image so we can rotate it without rotating the gameobject
+    private Transform image;
 
     private void Awake()
     {
         _inputs = InputProvider.instance.CharacterOverviewMap;
+        image = transform.Find("player_top_image");
     }
 
     private void OnEnable()
     {
         // map functions to input delegates here and unbind them in disable
-        _inputs.MapRotate.performed += Rotate;
-        _inputs.MapForward.performed += Forward;
+        _inputs.MapLeftRight.performed += LeftRightFunc;
+        _inputs.MapUpDown.performed += UpDownFunc;
     }
 
     private void OnDisable()
     {
-        _inputs.MapRotate.performed -= Rotate;
-        _inputs.MapForward.performed -= Forward;
+        _inputs.MapLeftRight.performed -= LeftRightFunc;
+        _inputs.MapUpDown.performed -= UpDownFunc;
     }
 
-    private void Forward(InputAction.CallbackContext cb)
-        => _currentForward = cb.ReadValue<float>();
+    private void UpDownFunc(InputAction.CallbackContext cb)
+        => upDown = cb.ReadValue<float>();
 
-    private void Rotate(InputAction.CallbackContext cb)
-        => _currentRotate = cb.ReadValue<float>();
+    private void LeftRightFunc(InputAction.CallbackContext cb)
+        => leftRight = cb.ReadValue<float>();
  
     // Use this for initialization
     void Start () {
@@ -48,14 +52,20 @@ public class MapPlayer : MonoBehaviour {
     }
  
     void FixedUpdate() {
-        forwardVector.y = forwardSpeed * _currentForward;
-        transform.Translate(forwardVector);
-        transform.Rotate(0, 0, -_currentRotate * rotationSpeed);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("TRIGGERED");
+        movementVector.x = movementSpeed * leftRight;
+        movementVector.y = movementSpeed * upDown;
+        transform.Translate(movementVector);
+        if (leftRight != 0) {
+            rotationVector.z = -leftRight * 90f;
+        }
+        if (upDown == 1) {
+            rotationVector.z = 0f;
+        }
+        if (upDown == -1) {
+            rotationVector.z = 180f;
+        }
+        image.eulerAngles = rotationVector;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

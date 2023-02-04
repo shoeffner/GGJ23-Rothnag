@@ -98,7 +98,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
             ""id"": ""fd4dd3b4-af7f-4034-b67e-bb5b61a9037d"",
             ""actions"": [
                 {
-                    ""name"": ""MapRotate"",
+                    ""name"": ""MapLeftRight"",
                     ""type"": ""PassThrough"",
                     ""id"": ""b12e82c4-6238-4ac2-a2f2-5c60e2eff931"",
                     ""expectedControlType"": ""Axis"",
@@ -107,7 +107,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MapForward"",
+                    ""name"": ""MapUpDown"",
                     ""type"": ""PassThrough"",
                     ""id"": ""55bb2560-981c-491e-b430-d01e673ffcc1"",
                     ""expectedControlType"": ""Axis"",
@@ -124,7 +124,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MapRotate"",
+                    ""action"": ""MapLeftRight"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -135,7 +135,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MapRotate"",
+                    ""action"": ""MapLeftRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -146,7 +146,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MapRotate"",
+                    ""action"": ""MapLeftRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -157,7 +157,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MapForward"",
+                    ""action"": ""MapUpDown"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -168,7 +168,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MapForward"",
+                    ""action"": ""MapUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -179,7 +179,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MapForward"",
+                    ""action"": ""MapUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -194,8 +194,8 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         m_CharacterActionMap_Jump = m_CharacterActionMap.FindAction("Jump", throwIfNotFound: true);
         // CharacterOverviewMap
         m_CharacterOverviewMap = asset.FindActionMap("CharacterOverviewMap", throwIfNotFound: true);
-        m_CharacterOverviewMap_MapRotate = m_CharacterOverviewMap.FindAction("MapRotate", throwIfNotFound: true);
-        m_CharacterOverviewMap_MapForward = m_CharacterOverviewMap.FindAction("MapForward", throwIfNotFound: true);
+        m_CharacterOverviewMap_MapLeftRight = m_CharacterOverviewMap.FindAction("MapLeftRight", throwIfNotFound: true);
+        m_CharacterOverviewMap_MapUpDown = m_CharacterOverviewMap.FindAction("MapUpDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -296,14 +296,14 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
     // CharacterOverviewMap
     private readonly InputActionMap m_CharacterOverviewMap;
     private ICharacterOverviewMapActions m_CharacterOverviewMapActionsCallbackInterface;
-    private readonly InputAction m_CharacterOverviewMap_MapRotate;
-    private readonly InputAction m_CharacterOverviewMap_MapForward;
+    private readonly InputAction m_CharacterOverviewMap_MapLeftRight;
+    private readonly InputAction m_CharacterOverviewMap_MapUpDown;
     public struct CharacterOverviewMapActions
     {
         private @RothnagInputActionAsset m_Wrapper;
         public CharacterOverviewMapActions(@RothnagInputActionAsset wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MapRotate => m_Wrapper.m_CharacterOverviewMap_MapRotate;
-        public InputAction @MapForward => m_Wrapper.m_CharacterOverviewMap_MapForward;
+        public InputAction @MapLeftRight => m_Wrapper.m_CharacterOverviewMap_MapLeftRight;
+        public InputAction @MapUpDown => m_Wrapper.m_CharacterOverviewMap_MapUpDown;
         public InputActionMap Get() { return m_Wrapper.m_CharacterOverviewMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -313,22 +313,22 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         {
             if (m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface != null)
             {
-                @MapRotate.started -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapRotate;
-                @MapRotate.performed -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapRotate;
-                @MapRotate.canceled -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapRotate;
-                @MapForward.started -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapForward;
-                @MapForward.performed -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapForward;
-                @MapForward.canceled -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapForward;
+                @MapLeftRight.started -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapLeftRight;
+                @MapLeftRight.performed -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapLeftRight;
+                @MapLeftRight.canceled -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapLeftRight;
+                @MapUpDown.started -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapUpDown;
+                @MapUpDown.performed -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapUpDown;
+                @MapUpDown.canceled -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapUpDown;
             }
             m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @MapRotate.started += instance.OnMapRotate;
-                @MapRotate.performed += instance.OnMapRotate;
-                @MapRotate.canceled += instance.OnMapRotate;
-                @MapForward.started += instance.OnMapForward;
-                @MapForward.performed += instance.OnMapForward;
-                @MapForward.canceled += instance.OnMapForward;
+                @MapLeftRight.started += instance.OnMapLeftRight;
+                @MapLeftRight.performed += instance.OnMapLeftRight;
+                @MapLeftRight.canceled += instance.OnMapLeftRight;
+                @MapUpDown.started += instance.OnMapUpDown;
+                @MapUpDown.performed += instance.OnMapUpDown;
+                @MapUpDown.canceled += instance.OnMapUpDown;
             }
         }
     }
@@ -340,7 +340,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
     }
     public interface ICharacterOverviewMapActions
     {
-        void OnMapRotate(InputAction.CallbackContext context);
-        void OnMapForward(InputAction.CallbackContext context);
+        void OnMapLeftRight(InputAction.CallbackContext context);
+        void OnMapUpDown(InputAction.CallbackContext context);
     }
 }

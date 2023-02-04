@@ -76,7 +76,7 @@
             "id": "fd4dd3b4-af7f-4034-b67e-bb5b61a9037d",
             "actions": [
                 {
-                    "name": "MapRotate",
+                    "name": "MapLeftRight",
                     "type": "PassThrough",
                     "id": "b12e82c4-6238-4ac2-a2f2-5c60e2eff931",
                     "expectedControlType": "Axis",
@@ -85,7 +85,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MapForward",
+                    "name": "MapUpDown",
                     "type": "PassThrough",
                     "id": "55bb2560-981c-491e-b430-d01e673ffcc1",
                     "expectedControlType": "Axis",
@@ -102,7 +102,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MapRotate",
+                    "action": "MapLeftRight",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -113,7 +113,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MapRotate",
+                    "action": "MapLeftRight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -124,7 +124,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MapRotate",
+                    "action": "MapLeftRight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -135,7 +135,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MapForward",
+                    "action": "MapUpDown",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -146,7 +146,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MapForward",
+                    "action": "MapUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -157,7 +157,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MapForward",
+                    "action": "MapUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
