@@ -69,6 +69,11 @@ namespace Rothnag
             timeUntilNextEvent = timeUntilNextEventStartValue;
         }
 
+        private void Start()
+        {
+            SpawnRandomEvent();
+        }
+
         private void SpawnRandomEvent()
         {
             // schedule next spawn
