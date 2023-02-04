@@ -29,8 +29,14 @@ namespace Rothnag
                         }
 
                         break;
-                    // case TreeNeedsBirdhouseEvent:
-                    // .. u know the drill
+                    case TreeNeedsBirdhouseEvent:
+                        if (playerInventory.birdHouse > 0)
+                        {
+                            playerInventory.birdHouse = 0;
+                            treeNeedsEvent.progress++;
+                        }
+
+                        break;
 
                     default:
                         throw new ArgumentOutOfRangeException(nameof(treeNeedsEvent));
