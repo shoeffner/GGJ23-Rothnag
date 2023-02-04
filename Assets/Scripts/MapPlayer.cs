@@ -3,9 +3,10 @@ using System;
 using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
- 
+using Rothnag;
+
 public class MapPlayer : MonoBehaviour {
- 
+
     private float movementSpeed = .1f;
     private Vector3 movementVector = new Vector3(0f, 0f, 0f);
     private Vector3 rotationVector = new Vector3(0f, 0f, 0f);
@@ -19,6 +20,7 @@ public class MapPlayer : MonoBehaviour {
 
     private void Awake()
     {
+        Debug.Log($"Coming from {SceneTracker.Instance.lastScene}");
         _inputs = InputProvider.instance.CharacterOverviewMap;
         image = transform.Find("player_top_image");
     }
@@ -41,16 +43,16 @@ public class MapPlayer : MonoBehaviour {
 
     private void LeftRightFunc(InputAction.CallbackContext cb)
         => leftRight = cb.ReadValue<float>();
- 
+
     // Use this for initialization
     void Start () {
     }
- 
+
     // Update is called once per frame
-    void Update () { 
+    void Update () {
         // get the movement
     }
- 
+
     void FixedUpdate() {
         movementVector.x = movementSpeed * leftRight;
         movementVector.y = movementSpeed * upDown;
@@ -65,7 +67,7 @@ public class MapPlayer : MonoBehaviour {
             rotationVector.z = 180f;
         }
         image.eulerAngles = rotationVector;
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
