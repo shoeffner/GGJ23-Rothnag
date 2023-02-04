@@ -9,11 +9,17 @@ public class BucketMiniGame : MonoBehaviour
     public Rigidbody2D rb;
     public Collider2D top;
     public Collider2D bottom;
+    public SpriteRenderer spriteRenderer;
+    
+    public Sprite bucketFullSprite;
+    public Sprite bucketEmptySprite;
+
     private RothnagInputActionAsset.BucketMiniGameActions _inputs;
     private RothnagInputActionAsset.CharacterActionMapActions _charInputs;
+    
 
     [Header("cfg")]
-    public float jumpForce = 50.0f;
+    public float pullForce = 3.0f;
 
     private Vector3 bucketPosition;
     // Start is called before the first frame update
@@ -23,10 +29,14 @@ public class BucketMiniGame : MonoBehaviour
         _inputs = InputProvider.instance.BucketMiniGame;
         _charInputs = InputProvider.instance.CharacterActionMap;
         _charInputs.Jump.Enable();
+        _charInputs.Walk.Enable();
         _inputs.Crank.Disable();
     }
 
     public void OnEnable() {
+        if (spriteRenderer == null) {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
         if (top == null) {
             top = GameObject.Find("well_top").GetComponent<Collider2D>();
         }
@@ -48,7 +58,7 @@ public class BucketMiniGame : MonoBehaviour
 
     private void Crank(InputAction.CallbackContext cb)
     {
-        rb.AddForce(jumpForce * Vector2.up);
+        rb.AddForce(pullForce * Vector2.up, ForceMode2D.Impulse);
     }
 
     void Start()
@@ -58,28 +68,35 @@ public class BucketMiniGame : MonoBehaviour
             transform.position.y,
             transform.position.z);
         top.enabled = false;
-        rb.gravityScale = 0f;
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider == bottom) {
             bucketFull = true;
+            spriteRenderer.sprite = bucketFullSprite;
             // start for the player
             top.enabled = true;
-            rb.gravityScale = 0.1f;
+            _inputs.Crank.Enable();
         }
         if (collision.collider == top) {
             //TODO: give bucket to player
             _charInputs.Jump.Enable();
+            _charInputs.Walk.Enable();
             _inputs.Crank.Disable();
             rb.gravityScale = 0f;
+            top.enabled = false;
+            transform.position = new Vector3(
+                bucketPosition.x,
+                bucketPosition.y,
+                bucketPosition.z);
             // TODO: disable image
         }
     }
 
     public void PreStartGame() {
+        spriteRenderer.sprite = bucketEmptySprite;
         _charInputs.Jump.Disable();
-        _inputs.Crank.Enable();
+        _charInputs.Walk.Disable();
         transform.position = new Vector3(
             bucketPosition.x,
             bucketPosition.y,

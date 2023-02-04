@@ -184,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 3c9e8726058d2f08dbaeba9c54ced821, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a090c1e122c5bfbfebf236f520f8c761, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -225,7 +225,10 @@ MonoBehaviour:
   rb: {fileID: 120081340}
   top: {fileID: 2072763694}
   bottom: {fileID: 192662775}
-  jumpForce: 50
+  spriteRenderer: {fileID: 0}
+  bucketFullSprite: {fileID: 21300000, guid: e9086d8eaebcde9c6b315bf8dd9934d7, type: 3}
+  bucketEmptySprite: {fileID: 21300000, guid: a090c1e122c5bfbfebf236f520f8c761, type: 3}
+  pullForce: 3
 --- !u!70 &120081339
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
