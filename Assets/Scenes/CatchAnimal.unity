@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 2066589371, guid: 7cab11ce66c8c48a7b5a6ffa445a6017, type: 3}
       propertyPath: triggerer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1925592008}
     - target: {fileID: 3498837360943461309, guid: 7cab11ce66c8c48a7b5a6ffa445a6017, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -421,6 +421,11 @@ PrefabInstance:
 --- !u!4 &1925592007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6145379908678785917, guid: 5312e9fffe8870143933a27ffe1e8d81, type: 3}
+  m_PrefabInstance: {fileID: 1925592006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1925592008 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6145379908678785912, guid: 5312e9fffe8870143933a27ffe1e8d81, type: 3}
   m_PrefabInstance: {fileID: 1925592006}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4965068052363391612
