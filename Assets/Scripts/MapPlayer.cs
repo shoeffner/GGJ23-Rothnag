@@ -20,7 +20,6 @@ public class MapPlayer : MonoBehaviour {
 
     private void Awake()
     {
-        Debug.Log($"Coming from {SceneTracker.Instance.lastScene}");
         _inputs = InputProvider.instance.CharacterOverviewMap;
         image = transform.Find("player_top_image");
     }
