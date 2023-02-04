@@ -57,6 +57,11 @@ namespace Rothnag
             this.originPrefab = originPrefab;
         }
 
+        protected void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         protected void Update()
         {
             _timeLeft -= Time.deltaTime;

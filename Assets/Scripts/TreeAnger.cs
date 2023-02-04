@@ -13,7 +13,7 @@ public class TreeAnger : MonoBehaviour
 
     void Awake()
     {
-        scoreKeeper = GameObject.FindWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
+        scoreKeeper = GameObject.FindWithTag("ScoreKeeper")?.GetComponent<ScoreKeeper>();
         spriteRenderer = spriteRenderer != null ? spriteRenderer : GetComponent<SpriteRenderer>();
         SetTreeSprite();
     }
@@ -24,7 +24,7 @@ public class TreeAnger : MonoBehaviour
     }
 
     void SetTreeSprite() {
-        if (scoreKeeper.failures != currentSprite) {
+        if (scoreKeeper != null && scoreKeeper.failures != currentSprite) {
             currentSprite = Mathf.Clamp(scoreKeeper.failures, 0, sprites.Count);
             spriteRenderer.sprite = sprites[currentSprite];
         }

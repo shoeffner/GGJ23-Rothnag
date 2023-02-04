@@ -1969,7 +1969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8185913836271759538, guid: 901a1a273f6ed449d90e465f11b6c3d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.33
+      value: -3.55
       objectReference: {fileID: 0}
     - target: {fileID: 8185913836271759538, guid: 901a1a273f6ed449d90e465f11b6c3d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2015,6 +2015,18 @@ PrefabInstance:
       propertyPath: scene.sceneAsset
       value: 
       objectReference: {fileID: 102900000, guid: 8c37294d85b5a31469cf96c749f68bd3, type: 3}
+    - target: {fileID: 8185913836271759540, guid: 901a1a273f6ed449d90e465f11b6c3d0, type: 3}
+      propertyPath: m_Size.x
+      value: 1.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185913836271759540, guid: 901a1a273f6ed449d90e465f11b6c3d0, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185913836271759540, guid: 901a1a273f6ed449d90e465f11b6c3d0, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.51
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

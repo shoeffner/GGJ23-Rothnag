@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Labyrinth.unity
     guid: 6b9a2a9d0fee847869b8c35a4b06ad70
   - enabled: 1
+    path: Assets/Scenes/CatchAnimal.unity
+    guid: b27600799eb426043915567151ed936e
+  - enabled: 1
     path: Assets/Scenes/ScoreScreen.unity
     guid: d229592a4c4c14a00b57fd9c7796bc4b
   m_configObjects: {}

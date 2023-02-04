@@ -39,7 +39,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ambience
+  - name: Ambiance
     uniqueID: 1467930627
     locked: 0
   - name: Default
