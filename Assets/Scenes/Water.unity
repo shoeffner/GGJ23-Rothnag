@@ -222,9 +222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7691fc6d6dd049da3b3d09b4b7648498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 120081340}
+  rb: {fileID: 120081340}
   top: {fileID: 2072763694}
   bottom: {fileID: 192662775}
+  jumpForce: 50
 --- !u!70 &120081339
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
