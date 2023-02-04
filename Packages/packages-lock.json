@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.tymski.scene-reference": {
+      "version": "https://github.com/Tymski/SceneReference.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "7a10ab108e926ed892a7d93bd348e56f432bc050"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.1",
       "depth": 1,
