@@ -1177,7 +1177,7 @@ PrefabInstance:
     - target: {fileID: 5976772737718995162, guid: bc3c5d2353c444749a2f8d923418711f, type: 3}
       propertyPath: triggerer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1483912695}
     - target: {fileID: 5976772737718995162, guid: bc3c5d2353c444749a2f8d923418711f, type: 3}
       propertyPath: scene.scenePath
       value: Assets/Scenes/Home.unity
@@ -1250,7 +1250,7 @@ PrefabInstance:
     - target: {fileID: 6835903788533900218, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
       propertyPath: triggerer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1483912695}
     - target: {fileID: 6835903788533900218, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
       propertyPath: scene.scenePath
       value: Assets/Scenes/Water.unity
