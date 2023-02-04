@@ -99,18 +99,18 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
             ""actions"": [
                 {
                     ""name"": ""MapRotate"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""b12e82c4-6238-4ac2-a2f2-5c60e2eff931"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""MapForward"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""55bb2560-981c-491e-b430-d01e673ffcc1"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
