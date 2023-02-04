@@ -40,7 +40,7 @@ public class ScoreKeeper : MonoBehaviour
 
     void FailedNeedsEvent(TreeNeedsEvent treeNeedsEvent) {
         treeNeedsEvent.OnFailed -= FailedNeedsEvent;
-        failures++;
+        failures = Mathf.Clamp(failures + 1, 0, loseOnFailure);
     }
 }
 

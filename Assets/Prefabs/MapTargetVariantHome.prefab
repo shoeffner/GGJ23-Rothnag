@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3768875472628756952}
   - component: {fileID: 5228848375054324364}
+  - component: {fileID: 2757234578402481983}
   m_Layer: 0
   m_Name: tree
   m_TagString: Untagged
@@ -84,6 +85,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2757234578402481983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613237273536195622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6f8e3b7011f48d29c80055c89efe28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5228848375054324364}
+  sprites:
+  - {fileID: 21300000, guid: e8df9d9ff057f4b74b379cbbec4dcad2, type: 3}
+  - {fileID: 21300000, guid: 98667ac45070644f7901ede6cc761e36, type: 3}
+  - {fileID: 21300000, guid: 55b933a6081c742b29be04e0fdc7bc54, type: 3}
+  - {fileID: 21300000, guid: 9e6cb1bc6055d42ad9151b752abb3804, type: 3}
 --- !u!1 &7089666325080452060
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 102900000, guid: 46a930fb8b2834555918a4b5ffb4c961, type: 3}
     - target: {fileID: 5390672449777541697, guid: e593043932ef549a689165bbf2dacc26, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5390672449777541697, guid: e593043932ef549a689165bbf2dacc26, type: 3}
       propertyPath: m_LocalScale.x
@@ -250,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5390672449777541702, guid: e593043932ef549a689165bbf2dacc26, type: 3}
       propertyPath: m_Name
-      value: home
+      value: MapTargetVariantHome
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3918619110372179539, guid: e593043932ef549a689165bbf2dacc26, type: 3}
