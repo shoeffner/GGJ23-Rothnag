@@ -9,7 +9,8 @@ namespace Rothnag
         {
             TreeNeedsEventManager treeNeedsEventManager = TreeNeedsEventManager.instance;
             PlayerInventory playerInventory = PlayerInventory.instance;
-            foreach (TreeNeedsEvent treeNeedsEvent in treeNeedsEventManager.treeNeedsEventsInUse)
+            TreeNeedsEvent[] treeNeedsEvents = treeNeedsEventManager.treeNeedsEventsInUse.ToArray();
+            foreach (TreeNeedsEvent treeNeedsEvent in treeNeedsEvents)
             {
                 switch (treeNeedsEvent)
                 {
