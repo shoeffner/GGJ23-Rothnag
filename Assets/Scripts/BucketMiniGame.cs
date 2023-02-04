@@ -13,7 +13,7 @@ public class BucketMiniGame : MonoBehaviour
     private RothnagInputActionAsset.CharacterActionMapActions _charInputs;
 
     [Header("cfg")]
-    public float jumpForce = 1.0f;
+    public float jumpForce = 50.0f;
 
     private Vector3 bucketPosition;
     // Start is called before the first frame update
@@ -61,12 +61,19 @@ public class BucketMiniGame : MonoBehaviour
         rb.gravityScale = 0f;
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other == bottom) {
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider == bottom) {
             bucketFull = true;
             // start for the player
             top.enabled = true;
             rb.gravityScale = 0.1f;
+        }
+        if (collision.collider == top) {
+            //TODO: give bucket to player
+            _charInputs.Jump.Enable();
+            _inputs.Crank.Disable();
+            rb.gravityScale = 0f;
+            // TODO: disable image
         }
     }
 
@@ -77,6 +84,7 @@ public class BucketMiniGame : MonoBehaviour
             bucketPosition.x,
             bucketPosition.y,
             bucketPosition.z);
+        top.enabled = false; // will be set to true when we hit the bottom
         rb.gravityScale = 1f;
     }
 
