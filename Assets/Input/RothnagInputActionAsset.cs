@@ -211,6 +211,15 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Walk"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""c341c87b-d5e4-4ec3-aa60-65954e6f17c0"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -411,6 +420,72 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""action"": ""MapUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""4be4b006-2d67-4cfe-b9b3-ed5a52ed2a83"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d86a22eb-99f5-463e-9e59-ea8e3e560372"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""4c75f15f-62b0-4c68-9928-4196b89177ad"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a9de39e8-d522-4f5e-9545-a47e4b37f8b7"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""fa69be6e-8c88-48c2-aa68-eea184fb1c2f"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2567b5f2-785e-4eb3-8922-b98fabaec459"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -465,6 +540,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         m_CharacterOverviewMap = asset.FindActionMap("CharacterOverviewMap", throwIfNotFound: true);
         m_CharacterOverviewMap_MapLeftRight = m_CharacterOverviewMap.FindAction("MapLeftRight", throwIfNotFound: true);
         m_CharacterOverviewMap_MapUpDown = m_CharacterOverviewMap.FindAction("MapUpDown", throwIfNotFound: true);
+        m_CharacterOverviewMap_Walk = m_CharacterOverviewMap.FindAction("Walk", throwIfNotFound: true);
         // BucketMiniGame
         m_BucketMiniGame = asset.FindActionMap("BucketMiniGame", throwIfNotFound: true);
         m_BucketMiniGame_Crank = m_BucketMiniGame.FindAction("Crank", throwIfNotFound: true);
@@ -578,12 +654,14 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
     private ICharacterOverviewMapActions m_CharacterOverviewMapActionsCallbackInterface;
     private readonly InputAction m_CharacterOverviewMap_MapLeftRight;
     private readonly InputAction m_CharacterOverviewMap_MapUpDown;
+    private readonly InputAction m_CharacterOverviewMap_Walk;
     public struct CharacterOverviewMapActions
     {
         private @RothnagInputActionAsset m_Wrapper;
         public CharacterOverviewMapActions(@RothnagInputActionAsset wrapper) { m_Wrapper = wrapper; }
         public InputAction @MapLeftRight => m_Wrapper.m_CharacterOverviewMap_MapLeftRight;
         public InputAction @MapUpDown => m_Wrapper.m_CharacterOverviewMap_MapUpDown;
+        public InputAction @Walk => m_Wrapper.m_CharacterOverviewMap_Walk;
         public InputActionMap Get() { return m_Wrapper.m_CharacterOverviewMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -599,6 +677,9 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                 @MapUpDown.started -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapUpDown;
                 @MapUpDown.performed -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapUpDown;
                 @MapUpDown.canceled -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnMapUpDown;
+                @Walk.started -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnWalk;
+                @Walk.performed -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnWalk;
+                @Walk.canceled -= m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface.OnWalk;
             }
             m_Wrapper.m_CharacterOverviewMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -609,6 +690,9 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                 @MapUpDown.started += instance.OnMapUpDown;
                 @MapUpDown.performed += instance.OnMapUpDown;
                 @MapUpDown.canceled += instance.OnMapUpDown;
+                @Walk.started += instance.OnWalk;
+                @Walk.performed += instance.OnWalk;
+                @Walk.canceled += instance.OnWalk;
             }
         }
     }
@@ -656,6 +740,7 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
     {
         void OnMapLeftRight(InputAction.CallbackContext context);
         void OnMapUpDown(InputAction.CallbackContext context);
+        void OnWalk(InputAction.CallbackContext context);
     }
     public interface IBucketMiniGameActions
     {

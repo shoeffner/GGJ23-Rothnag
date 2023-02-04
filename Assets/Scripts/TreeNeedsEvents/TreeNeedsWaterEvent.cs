@@ -1,5 +1,4 @@
-﻿using System;
-using Input;
+﻿using Input;
 using UnityEngine.InputSystem;
 
 namespace Rothnag.TreeNeedsEvents
@@ -9,8 +8,11 @@ namespace Rothnag.TreeNeedsEvents
     {
         private RothnagInputActionAsset.CharacterActionMapActions _instanceCharacterActionMap;
 
-        private void Awake()
-            => _instanceCharacterActionMap = InputProvider.instance.CharacterActionMap;
+        private new void Awake()
+        {
+            base.Awake();
+            _instanceCharacterActionMap = InputProvider.instance.CharacterActionMap;
+        }
 
         private void OnEnable()
         {
