@@ -2571,7 +2571,7 @@ MonoBehaviour:
   rb: {fileID: 7186023006963931992}
   animator: {fileID: 393316244884323533}
   groundCheck: {fileID: 5314082707393924704}
-  jumpForce: 250
+  jumpForce: 350
   movementForce: 20
   animatorTolerance: 0.1
 --- !u!50 &7186023006963931992
