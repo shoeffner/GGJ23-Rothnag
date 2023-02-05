@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeLimit: 20
   _timeLeft: 20
-  _progressNeeded: 3
+  _progressNeeded: 1
   _progress: 0
