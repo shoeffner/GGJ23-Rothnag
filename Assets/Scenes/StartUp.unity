@@ -438,6 +438,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8306008069819890209, guid: 9ba5bc6fdcb7e1340ab0ea189b83d564, type: 3}
+      propertyPath: spawnTimerFactor
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306008069819890209, guid: 9ba5bc6fdcb7e1340ab0ea189b83d564, type: 3}
+      propertyPath: timeUntilNextEventStartValue
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306008069819890209, guid: 9ba5bc6fdcb7e1340ab0ea189b83d564, type: 3}
       propertyPath: treeNeedsEventPrefabs.Array.size
       value: 3
       objectReference: {fileID: 0}
