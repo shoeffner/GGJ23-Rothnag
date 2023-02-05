@@ -527,6 +527,45 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ScoreScreen"",
+            ""id"": ""63eea2dd-aff0-4ce3-aedc-7d973ae1fea7"",
+            ""actions"": [
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b6e14ea-0fff-4bf4-8234-44723de0d397"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1c1e9d6f-90a4-4e4d-972d-59ac66baf339"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef67b0f8-1e63-40f1-bedf-7c22d4bb81da"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -544,6 +583,9 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         // BucketMiniGame
         m_BucketMiniGame = asset.FindActionMap("BucketMiniGame", throwIfNotFound: true);
         m_BucketMiniGame_Crank = m_BucketMiniGame.FindAction("Crank", throwIfNotFound: true);
+        // ScoreScreen
+        m_ScoreScreen = asset.FindActionMap("ScoreScreen", throwIfNotFound: true);
+        m_ScoreScreen_Restart = m_ScoreScreen.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -730,6 +772,39 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
         }
     }
     public BucketMiniGameActions @BucketMiniGame => new BucketMiniGameActions(this);
+
+    // ScoreScreen
+    private readonly InputActionMap m_ScoreScreen;
+    private IScoreScreenActions m_ScoreScreenActionsCallbackInterface;
+    private readonly InputAction m_ScoreScreen_Restart;
+    public struct ScoreScreenActions
+    {
+        private @RothnagInputActionAsset m_Wrapper;
+        public ScoreScreenActions(@RothnagInputActionAsset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Restart => m_Wrapper.m_ScoreScreen_Restart;
+        public InputActionMap Get() { return m_Wrapper.m_ScoreScreen; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ScoreScreenActions set) { return set.Get(); }
+        public void SetCallbacks(IScoreScreenActions instance)
+        {
+            if (m_Wrapper.m_ScoreScreenActionsCallbackInterface != null)
+            {
+                @Restart.started -= m_Wrapper.m_ScoreScreenActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_ScoreScreenActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_ScoreScreenActionsCallbackInterface.OnRestart;
+            }
+            m_Wrapper.m_ScoreScreenActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
+            }
+        }
+    }
+    public ScoreScreenActions @ScoreScreen => new ScoreScreenActions(this);
     public interface ICharacterActionMapActions
     {
         void OnWalk(InputAction.CallbackContext context);
@@ -745,5 +820,9 @@ public partial class @RothnagInputActionAsset : IInputActionCollection2, IDispos
     public interface IBucketMiniGameActions
     {
         void OnCrank(InputAction.CallbackContext context);
+    }
+    public interface IScoreScreenActions
+    {
+        void OnRestart(InputAction.CallbackContext context);
     }
 }

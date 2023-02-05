@@ -1,19 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Tymski;
 
 namespace Rothnag {
 
-public class LoadFirstScene : MonoBehaviour
+public class EnsureTreeNeedsIsNotStopped : MonoBehaviour
 {
-    public SceneReference scene;
-
     void Awake()
     {
+        Debug.Log("Restarting TreeNeedsEventManager");
         TreeNeedsEventManager.instance.Restart();
-        SceneManager.LoadSceneAsync(scene);
     }
 }
 

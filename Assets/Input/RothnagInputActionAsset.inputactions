@@ -505,6 +505,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ScoreScreen",
+            "id": "63eea2dd-aff0-4ce3-aedc-7d973ae1fea7",
+            "actions": [
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "9b6e14ea-0fff-4bf4-8234-44723de0d397",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1c1e9d6f-90a4-4e4d-972d-59ac66baf339",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef67b0f8-1e63-40f1-bedf-7c22d4bb81da",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

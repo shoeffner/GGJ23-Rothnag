@@ -19,6 +19,7 @@ namespace Rothnag
 
         public float timeUntilNextEvent { get; private set; }
 
+        private bool stopped = false;
 
         [SerializeField]
         private GameObject[] treeNeedsEventPrefabs;
@@ -64,18 +65,32 @@ namespace Rothnag
             // for singleton
             if (!EnsureInstantiatedOnlyOnce())
                 return; // abort
+        }
 
-            _treeNeedsEventPrefabsNotInUse = treeNeedsEventPrefabs.ToHashSet();
-            timeUntilNextEvent = timeUntilNextEventStartValue;
+        public void Stop()
+        {
+            stopped = true;
+        }
+
+        public void Restart()
+        {
+            if (stopped)
+            {
+                Start();
+            }
         }
 
         private void Start()
         {
+            stopped = false;
+            _treeNeedsEventPrefabsNotInUse = treeNeedsEventPrefabs.ToHashSet();
+            timeUntilNextEvent = timeUntilNextEventStartValue;
             SpawnRandomEvent();
         }
 
         private void SpawnRandomEvent()
         {
+            if (stopped) return;
             // schedule next spawn
             UpdateTimer();
             Invoke(nameof(SpawnRandomEvent), timeUntilNextEvent);
@@ -111,5 +126,6 @@ namespace Rothnag
         /// </summary>
         private void UpdateTimer()
             => timeUntilNextEvent *= spawnTimerFactor;
+
     }
 }
