@@ -1,5 +1,7 @@
 # Rothnag'Ka Trk
 
+![Rothnag'Ka Trk](Miscellaneous/Preview_scaled.png)
+
 > The well rooted one requires constant care to stay rooted.
 
 From the apocrypha of Rothnag'Ka Trk.
