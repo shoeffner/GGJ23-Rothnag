@@ -45,6 +45,7 @@ public sealed class CharacterController : MonoBehaviour
     private void Jump(InputAction.CallbackContext cb)
     {
         rb.AddForce(jumpForce * Vector2.up);
+        animator.SetTrigger("Jump");
     }
 
     private int VelocityToDirection(float verticalVelocity)
