@@ -96,11 +96,10 @@ namespace Rothnag
             Invoke(nameof(SpawnRandomEvent), timeUntilNextEvent);
 
             // pick a random Event prefab to spawn that's not used already, if any exist
-            Random random = new Random();
             if (_treeNeedsEventPrefabsNotInUse.Count == 0)
                 return;
 
-            Invoke(nameof(SpawnRandomEvent), timeUntilNextEvent);
+            Random random = new Random();
             GameObject selectedPrefab =
                     _treeNeedsEventPrefabsNotInUse.ElementAt(random.Next(0, _treeNeedsEventPrefabsNotInUse.Count - 1));
             // spawn
