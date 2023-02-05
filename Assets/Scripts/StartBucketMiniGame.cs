@@ -21,6 +21,7 @@ public class StartBucketMiniGame : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider == triggerer) {
             miniGame.PreStartGame();
+            triggerer.GetComponent<CharacterController>().animator.SetBool("IsWalking", false);
         }
     }
 }
