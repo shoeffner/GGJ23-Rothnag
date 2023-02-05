@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Rothnag;
 
-public class UiManagement : MonoBehaviour
+public class ItemsPlayerHas : MonoBehaviour
 {
     public Image birdhouse;
     public Image animal;
