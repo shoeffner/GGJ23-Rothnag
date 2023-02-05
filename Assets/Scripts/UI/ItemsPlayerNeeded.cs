@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Rothnag;
@@ -26,7 +24,57 @@ public sealed class ItemsPlayerNeeded : MonoBehaviour
         updateIndicator(birdhouseIndicator, 1f);
         updateIndicator(animalIndicator, 1f);
         updateIndicator(bucketIndicator, 1f);
+
+
     }
+
+    private void OnEnable()
+    {
+        foreach (TreeNeedsEvent treeNeedsEvent in _treeNeedsEventManager.treeNeedsEventsInUse)
+            RegisterResetIndicator(treeNeedsEvent);
+        _treeNeedsEventManager.OnEventStarted += RegisterResetIndicator;
+    }
+
+    private void OnDisable()
+    {
+        foreach (TreeNeedsEvent treeNeedsEvent in _treeNeedsEventManager.treeNeedsEventsInUse)
+            UnregisterResetIndicator(treeNeedsEvent);
+        _treeNeedsEventManager.OnEventStarted -= RegisterResetIndicator;
+    }
+
+    private void RegisterResetIndicator(TreeNeedsEvent treeNeedsEvent)
+    {
+        treeNeedsEvent.OnFailed += ResetIndicator;
+        treeNeedsEvent.OnCompleted += ResetIndicator;
+    }
+
+    private void UnregisterResetIndicator(TreeNeedsEvent treeNeedsEvent)
+    {
+        treeNeedsEvent.OnFailed -= ResetIndicator;
+        treeNeedsEvent.OnCompleted -= ResetIndicator;
+    }
+
+    private void ResetIndicator(TreeNeedsEvent treeNeedsEvent)
+    {
+        switch(treeNeedsEvent)
+        {
+            case TreeNeedsBirdhouseEvent:
+                updateIndicator(birdhouseIndicator, 1f);
+                break;
+            case TreeNeedsSacrificeEvent:
+                updateIndicator(animalIndicator, 1f);
+                break;
+            case TreeNeedsWaterEvent:
+                updateIndicator(bucketIndicator, 1f);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(treeNeedsEvent));
+            
+        }
+
+        UnregisterResetIndicator(treeNeedsEvent);
+    }
+
 
     void Update()
     {
@@ -50,12 +98,17 @@ public sealed class ItemsPlayerNeeded : MonoBehaviour
 
     private void updateIndicator(Image indicator, float percentage)
     {
-        if (percentage > 0.666) {
-            indicator.GetComponent<Image>().color = red;
+        if (indicator == null)
+        {
+            throw new Exception("indicator null");
+        }
+        if (percentage > 0.666)
+        {
+            indicator.color = red;
         } else if (percentage > 0.333) {
-            indicator.GetComponent<Image>().color = yellow;
+            indicator.color = yellow;
         } else {
-            indicator.GetComponent<Image>().color = green;
+            indicator.color = green;
         }
         indicator.rectTransform.sizeDelta = new Vector2(indicator.rectTransform.sizeDelta.x, percentage * 100);
         indicator.rectTransform.anchoredPosition =
