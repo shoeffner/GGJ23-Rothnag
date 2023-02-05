@@ -19,14 +19,14 @@ PrefabInstance:
     - target: {fileID: 121688944705195527, guid: e593043932ef549a689165bbf2dacc26, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: efcc716851a2542ce85c5b34d388b8aa, type: 3}
+      objectReference: {fileID: 21300000, guid: a56454e57dd83d5eca7ec27e1b3b535f, type: 3}
     - target: {fileID: 121688944705195527, guid: e593043932ef549a689165bbf2dacc26, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5390672449777541697, guid: e593043932ef549a689165bbf2dacc26, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5390672449777541697, guid: e593043932ef549a689165bbf2dacc26, type: 3}
       propertyPath: m_LocalScale.x
@@ -95,15 +95,15 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5390672449777541702, guid: e593043932ef549a689165bbf2dacc26, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8728325643683237958}
+      addedObject: {fileID: 7136745871746817748}
   m_SourcePrefab: {fileID: 100100000, guid: e593043932ef549a689165bbf2dacc26, type: 3}
 --- !u!1 &5293165103326055272 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5390672449777541702, guid: e593043932ef549a689165bbf2dacc26, type: 3}
   m_PrefabInstance: {fileID: 268700394484918574}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &8728325643683237958
-PolygonCollider2D:
+--- !u!61 &7136745871746817748
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,20 +134,16 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.16121483, y: 0.5032635}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.97, y: 2.57}
+    oldSize: {x: 20.48, y: 20.48}
     newSize: {x: 1.97, y: 2.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.98499995, y: 1.285}
-      - {x: -0.98499995, y: -1.285}
-      - {x: 0.98499995, y: -1.285}
-      - {x: 0.98499995, y: 1.285}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 18.423859, y: 19.473473}
+  m_EdgeRadius: 0

@@ -1069,6 +1069,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: forest
       objectReference: {fileID: 0}
+    - target: {fileID: 3218889404261952393, guid: 03c1a3869b32d4086a74e076d3fd3f8c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218889404261952393, guid: 03c1a3869b32d4086a74e076d3fd3f8c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218889404261952393, guid: 03c1a3869b32d4086a74e076d3fd3f8c, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218889404261952393, guid: 03c1a3869b32d4086a74e076d3fd3f8c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218889404261952393, guid: 03c1a3869b32d4086a74e076d3fd3f8c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 20.48
+      objectReference: {fileID: 0}
     - target: {fileID: 5596800830146613876, guid: 03c1a3869b32d4086a74e076d3fd3f8c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1268,6 +1288,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 27.92
       objectReference: {fileID: 0}
+    - target: {fileID: 7136745871746817748, guid: 9ff4f78c784d14bb79d56b4922c964c1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3880738129305245565, guid: 9ff4f78c784d14bb79d56b4922c964c1, type: 3}
     m_RemovedGameObjects: []
@@ -1287,6 +1311,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1123377421}
     m_Modifications:
+    - target: {fileID: 1940554298, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940554298, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 20.48
+      objectReference: {fileID: 0}
     - target: {fileID: 3769434535645388707, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
       propertyPath: m_Name
       value: water
@@ -1351,6 +1383,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5251628056556618678, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
+      propertyPath: m_Radius
+      value: 8.698228
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251628056556618678, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.4681946
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251628056556618678, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.9197853
+      objectReference: {fileID: 0}
     - target: {fileID: 6835903788533900218, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
       propertyPath: triggerer
       value: 
@@ -1367,7 +1411,8 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: bdc46318f14d2f8faab55687c67c5902, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1940554298, guid: 7f74b33e3f998413e8cd0dd9dc3041ed, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
