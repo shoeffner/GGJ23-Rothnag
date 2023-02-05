@@ -1,5 +1,6 @@
 using System;
 using Input;
+using Rothnag;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public sealed class CharacterController : MonoBehaviour
     [Header("References")]
     public Rigidbody2D rb;
     public Animator animator;
+    public GroundCheck groundCheck;
 
     [Header("cfg")]
     public float jumpForce;
@@ -44,8 +46,11 @@ public sealed class CharacterController : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext cb)
     {
-        rb.AddForce(jumpForce * Vector2.up);
-        animator.SetTrigger("Jump");
+        if(groundCheck.isGrounded)
+        {
+            rb.AddForce(jumpForce * Vector2.up);
+            animator.SetTrigger("Jump");
+        }
     }
 
     private int VelocityToDirection(float verticalVelocity)
