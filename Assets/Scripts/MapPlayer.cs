@@ -1,3 +1,4 @@
+using System;
 using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,8 @@ public sealed class MapPlayer : MonoBehaviour
 
     private RothnagInputActionAsset.CharacterOverviewMapActions _inputs;
     private Vector2 _currentWalkInput;
+
+    public Animator animator;
 
     private void Awake()
     {
@@ -51,5 +54,6 @@ public sealed class MapPlayer : MonoBehaviour
         float angle = Mathf.Atan2(velocity.y * Mathf.Deg2Rad, velocity.x * Mathf.Deg2Rad) * Mathf.Rad2Deg + imageRotationOffset;
         angle %= 360f;
         image.rotation = Quaternion.Euler(0f, 0f, angle);
+        animator.SetBool("IsWalking", Math.Abs(_currentWalkInput.x) >= .1f || Math.Abs(_currentWalkInput.y) >= .1f);
     }
 }
