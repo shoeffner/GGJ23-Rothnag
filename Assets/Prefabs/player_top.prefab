@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 417699705119158517}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6145379908678785916
 Rigidbody2D:
@@ -78,6 +78,7 @@ MonoBehaviour:
   image: {fileID: 417699705119158517}
   movementForce: 20
   imageRotationOffset: -90
+  animator: {fileID: 3087448948137265557}
 --- !u!58 &6145379908678785912
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -177,5 +178,10 @@ PrefabInstance:
 --- !u!4 &417699705119158517 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5598975094790191218, guid: b76efe935084e22e09b559999a2d3903, type: 3}
+  m_PrefabInstance: {fileID: 5222057376539199623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3087448948137265557 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7106869267772195090, guid: b76efe935084e22e09b559999a2d3903, type: 3}
   m_PrefabInstance: {fileID: 5222057376539199623}
   m_PrefabAsset: {fileID: 0}
