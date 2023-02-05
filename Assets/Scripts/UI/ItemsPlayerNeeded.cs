@@ -1,33 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Rothnag;
+using Rothnag.TreeNeedsEvents;
 
-public class ItemsPlayerNeeded : MonoBehaviour
+public sealed class ItemsPlayerNeeded : MonoBehaviour
 {
     public Image birdhouseIndicator;
     public Image animalIndicator;
     public Image bucketIndicator;
 
     private float testPercentage = 1.0f;
+    private TreeNeedsEventManager _treeNeedsEventManager;
+
+    private void Awake()
+    {
+        _treeNeedsEventManager = TreeNeedsEventManager.instance;
+        // init indicators
+        updateIndicator(birdhouseIndicator, 1f);
+        updateIndicator(animalIndicator, 1f);
+        updateIndicator(bucketIndicator, 1f);
+    }
 
     void Update()
     {
-        // listen to update events would be nicer but this is still a Game Jam
-        testPercentage -= 0.01f;
-        if (testPercentage <= 0) {
-            testPercentage = 1f;
+        foreach (TreeNeedsEvent treeNeedsEvent in _treeNeedsEventManager.treeNeedsEventsInUse)
+        {
+            float timeLeftRatio = treeNeedsEvent.timeLeft / treeNeedsEvent.timeLimit;
+            switch (treeNeedsEvent)
+            {
+                case TreeNeedsBirdhouseEvent:
+                    updateIndicator(birdhouseIndicator, timeLeftRatio);
+                    break;
+                case TreeNeedsSacrificeEvent:
+                    updateIndicator(animalIndicator, timeLeftRatio);
+                    break;
+                case TreeNeedsWaterEvent:
+                    updateIndicator(bucketIndicator, timeLeftRatio);
+                    break;
+            }
         }
-        updateIndicator(bucketIndicator, testPercentage);
-        updateIndicator(animalIndicator, testPercentage);
-        updateIndicator(birdhouseIndicator, testPercentage);
-
     }
 
-    void updateIndicator(Image indicator, float percentage) {
+    private void updateIndicator(Image indicator, float percentage)
+    {
         indicator.rectTransform.sizeDelta = new Vector2(indicator.rectTransform.sizeDelta.x, percentage * 100);
-        indicator.rectTransform.anchoredPosition = new Vector2(indicator.rectTransform.anchoredPosition.x, percentage * 90 + -200);
-
+        indicator.rectTransform.anchoredPosition =
+                new Vector2(indicator.rectTransform.anchoredPosition.x, percentage * 90 + -200);
     }
 }

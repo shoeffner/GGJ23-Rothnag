@@ -23,11 +23,6 @@ namespace Rothnag
             Physics2D.IgnoreCollision(footCollider, parentCollider, false);
         }
 
-        private void OnCollisionEnter2D(Collision2D col)
-        {
-            throw new NotImplementedException();
-        }
-
         private void OnTriggerEnter2D(Collider2D _)
         {
             if (_standingOn == 0)
